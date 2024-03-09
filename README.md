@@ -1,1 +1,1 @@
-# Simon-Dicev3
+Un juego llamado Simon Dice para programacion 
