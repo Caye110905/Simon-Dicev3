@@ -25,11 +25,9 @@ import java.util.Random;
 	 */
 	private int MAX_COLORES_SEQ = 4;
 	private int MAX_COLORES_SEQ1 = 7;
-	private int MAX_JUGADORES = 10;
 	private int ayuda = 3;
-	private int salida = 0;
 	private tColores1[] secuenciaColores1 = new tColores1[15];
-	private Persona3[] jugadores = new Persona3[MAX_JUGADORES];
+
 	
 	public void separador() {
 		System.out.println("------------------------------------------------------------");
@@ -167,7 +165,7 @@ import java.util.Random;
 	 */
 	public void menu() {
 		separador();
-		System.out.println("1- Salir \n2- Jugar en modo fácil \n3- Jugar en modo difícil \n4- Ver 10 mejores jugadores \n5- Ver jugador(es) con la puntuacion mas alta");
+		System.out.println("1- Salir \n2- Jugar en modo fácil \n3- Jugar en modo difícil \n4- Ver 10 mejores jugadores \n5- Ver jugador con la puntuacion mas alta");
 		separador();
 	}
 
@@ -183,16 +181,8 @@ import java.util.Random;
 		Persona3 persona1 = new Persona3();
 		Scanner scanner = new Scanner(System.in);
 		String persona = scanner.nextLine();
-		persona1.setNombre(persona);
-		int i = 0;
-		while(jugadores[i] != null && i<MAX_JUGADORES-1){
-			i++;
-		}
-		if(i<=MAX_JUGADORES-1) {
-			jugadores[i] = persona1;
-		}
-		salida = i;
-		System.out.println("Hello " + persona1.getNombre() + ", press ENTER to start playing");
+		añadirJugador(persona);
+		System.out.println("Hello " + getNombreRecord() + ", press ENTER to start playing");
 		Scanner scanner1 = new Scanner(System.in);
 		scanner1.nextLine();
 		persona1.setPuntuacion(0);
@@ -218,12 +208,12 @@ import java.util.Random;
 			break;
 		case 4:
 			System.out.println("Los 10 mejores jugadores con mas de 0 puntos son: ");
-			jugadores = showRanking(jugadores);
+			showRanking();
 			System.exit(0);
 			break;
 		case 5:
-			System.out.println("Los 3 mejores jugadores con mas de 0 puntos son: ");
-			showBestPlayer(jugadores);
+			System.out.println("El jugador con la puntuacion mas alta es: ");
+			showBestPlayer();
 			System.exit(0);
 			break;
 		default:
@@ -267,9 +257,9 @@ import java.util.Random;
 					tColores1 colorEscogido = charToColor(secuenciaUsuario,secuenciaColores1[k]);
 					if(secuenciaUsuario == 'x' && _numColores == MAX_COLORES_SEQ1){
 						if(usarAyuda(k)) {
-							jugadores[salida].setPuntuacion(jugadores[salida].getPuntuacion() - 10);
-							if(jugadores[salida].getPuntuacion() < 0) {
-								jugadores[salida].setPuntuacion(-2);
+							setPuntuacionRecord(getPuntuacionRecord() - 10);
+							if(getPuntuacionRecord() < 0) {
+								setPuntuacionRecord(-2);
 							}
 						}
 						secuenciaUsuario = s.next().charAt(0);
@@ -278,40 +268,43 @@ import java.util.Random;
 					
 					if (comprobarColor1(k, colorEscogido)) {
 						System.out.println("Correcto, bien hecho");
-						jugadores[salida].setPuntuacion(jugadores[salida].getPuntuacion() + 2);
-						System.out.println("Tu puntuacion es " + jugadores[salida].getPuntuacion());
+						setPuntuacionRecord(getPuntuacionRecord() + 2);
+						System.out.println("Tu puntuacion es " + getPuntuacionRecord());
 					} else {
 						System.out.println("Incorrecto, fin del juego");
+						ordenarRanking();
 						play();
 					}
 					k++;
 				}
-				jugadores[salida].setPuntuacion(jugadores[salida].getPuntuacion() + 5);
+				setPuntuacionRecord(getPuntuacionRecord() + 5);
 	
 			if (i == 12 - 3 && _numColores == MAX_COLORES_SEQ) {
 				System.out.println("Has ganado, terminaste el juego");
-				jugadores[salida].setPuntuacion(jugadores[salida].getPuntuacion() + 40);
-				System.out.println("Tu puntuacion final ha sido " + jugadores[salida].getPuntuacion());
+				setPuntuacionRecord(getPuntuacionRecord() + 40);
+				System.out.println("Tu puntuacion final ha sido " + getPuntuacionRecord());
+				ordenarRanking();
 				System.out.println("¿Quieres repetir el intento?(s)");
 				String jugar = new Scanner(System.in).nextLine();
-				System.out.println(jugadores[salida].getNombre() + ": " + jugadores[salida].getPuntuacion());
+				System.out.println(getNombreRecord() + ": " + getPuntuacionRecord());
 				if(jugar.equalsIgnoreCase("s")) {
 					play();
 				}
 			}
 			if (i == 15 - 3 && _numColores == MAX_COLORES_SEQ1) {
 				System.out.println("Has ganado, terminaste el juego");
-				jugadores[salida].setPuntuacion(jugadores[salida].getPuntuacion() + 40);
-				System.out.println("Tu puntuacion final ha sido " + (jugadores[salida].getPuntuacion())*2);
+				setPuntuacionRecord(getPuntuacionRecord() + 40);
+				System.out.println("Tu puntuacion final ha sido " + (getPuntuacionRecord())*2);
+				ordenarRanking();
 				System.out.println("¿Quieres repetir el intento?(s)");
 				String jugar = new Scanner(System.in).nextLine();
-				System.out.println(jugadores[salida].getNombre() + ": " + jugadores[salida].getPuntuacion());
+				System.out.println(getNombreRecord() + ": " + getPuntuacionRecord());
 				if(jugar.equalsIgnoreCase("s")) {
 					play();
 				}
 			}
       }
 		System.out.println("Tu puntuacion final ha sido: ");
-		return jugadores[salida].getPuntuacion();
+		return getPuntuacionRecord();
    }
 }
