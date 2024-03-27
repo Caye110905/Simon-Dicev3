@@ -58,7 +58,7 @@ public class Record {
 	}
 	
 	public void showBestPlayer () {
-			System.out.println(jugadores[0].getPuntuacion() + "   " + jugadores[0].getNombre());
+		System.out.println(jugadores[0].getPuntuacion() + "   " + jugadores[0].getNombre());
 	}
 	public void añadirJugador(String name) {
 		Persona3 persona = new Persona3();
