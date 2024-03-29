@@ -1,17 +1,24 @@
 package Main3;
 
-import java.io.IOException;
-import java.util.ArrayList;
-
-import files.CustomReadFile;
 import files.CustomWriteFile;
+import files.CustomReadFile;
 
-public class Record {
+public class Record extends CustomWriteFile{
 	
 	private int MAX_JUGADORES = 10;
 	private Persona3[] jugadores = new Persona3[MAX_JUGADORES];
 	private int salida = 0;
-
+	
+	public void escribirRanking(){
+		String[] jugadores2 = new String[10];
+        for(int i = 0; i < jugadores.length -1 && jugadores[i] != null; i++) {
+        	if(jugadores[i] != null) {
+        		jugadores2[i] = jugadores[i].getNombre() + "   " + String.valueOf(jugadores[i].getPuntuacion());
+        	}
+        }
+        WriteJugadores(jugadores2);
+	}
+	
 	public void ordenarRanking(){
 		int f = 0;
 		int posicion = 0;
@@ -34,6 +41,7 @@ public class Record {
         for(int i = 0; i < jugadores2.length -1; i++) {
         	jugadores[i] = jugadores2[i];
         }
+        escribirRanking();
 	}
 	
 	public void ordenarArray(int[] array) {
