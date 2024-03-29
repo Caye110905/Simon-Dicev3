@@ -28,7 +28,6 @@ import java.util.Random;
 	private int ayuda = 3;
 	private tColores1[] secuenciaColores1 = new tColores1[15];
 
-	
 	public void separador() {
 		System.out.println("------------------------------------------------------------");
 	}
