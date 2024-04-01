@@ -27,7 +27,7 @@ import java.util.Random;
 	private int MAX_COLORES_SEQ1 = 7;
 	private int ayuda = 3;
 	private tColores1[] secuenciaColores1 = new tColores1[15];
-
+	private int puntuacionMax = 0;
 	public void separador() {
 		System.out.println("------------------------------------------------------------");
 	}
@@ -180,7 +180,8 @@ import java.util.Random;
 		Persona3 persona1 = new Persona3();
 		Scanner scanner = new Scanner(System.in);
 		String persona = scanner.nextLine();
-		añadirJugador(persona);
+		cargarRanking();
+		puntuacionMax = añadirJugador(persona);
 		System.out.println("Hello " + getNombreRecord() + ", press ENTER to start playing");
 		Scanner scanner1 = new Scanner(System.in);
 		scanner1.nextLine();
@@ -271,7 +272,11 @@ import java.util.Random;
 						System.out.println("Tu puntuacion es " + getPuntuacionRecord());
 					} else {
 						System.out.println("Incorrecto, fin del juego");
+						if(puntuacionMax > getPuntuacionRecord()) {
+							setPuntuacionRecord(puntuacionMax);
+						}
 						ordenarRanking();
+						escribirRanking();
 						play();
 					}
 					k++;
@@ -283,6 +288,7 @@ import java.util.Random;
 				setPuntuacionRecord(getPuntuacionRecord() + 40);
 				System.out.println("Tu puntuacion final ha sido " + getPuntuacionRecord());
 				ordenarRanking();
+				escribirRanking();
 				System.out.println("¿Quieres repetir el intento?(s)");
 				String jugar = new Scanner(System.in).nextLine();
 				System.out.println(getNombreRecord() + ": " + getPuntuacionRecord());
@@ -295,6 +301,7 @@ import java.util.Random;
 				setPuntuacionRecord(getPuntuacionRecord() + 40);
 				System.out.println("Tu puntuacion final ha sido " + (getPuntuacionRecord())*2);
 				ordenarRanking();
+				escribirRanking();
 				System.out.println("¿Quieres repetir el intento?(s)");
 				String jugar = new Scanner(System.in).nextLine();
 				System.out.println(getNombreRecord() + ": " + getPuntuacionRecord());

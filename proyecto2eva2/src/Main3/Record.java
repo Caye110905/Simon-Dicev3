@@ -1,7 +1,6 @@
 package Main3;
 
 import files.CustomWriteFile;
-import files.CustomReadFile;
 
 public class Record extends CustomWriteFile{
 	
@@ -13,10 +12,22 @@ public class Record extends CustomWriteFile{
 		String[] jugadores2 = new String[10];
         for(int i = 0; i < jugadores.length -1 && jugadores[i] != null; i++) {
         	if(jugadores[i] != null) {
-        		jugadores2[i] = jugadores[i].getNombre() + "   " + String.valueOf(jugadores[i].getPuntuacion());
+        		jugadores2[i] = jugadores[i].getNombre() + " " + String.valueOf(jugadores[i].getPuntuacion());
         	}
         }
         WriteJugadores(jugadores2);
+	}
+	
+	public void cargarRanking(){
+		String[] jugadores2 = LeerJugadores();
+        for(int i = 0; i < jugadores2.length; i++) {
+        	Persona3 persona = new Persona3();
+        	String split[] = jugadores2[i].split(" ");
+        	int num = Integer.parseInt(split[1]);
+        	persona.setNombre(split[0]);
+        	persona.setPuntuacion(num);
+        	jugadores[i] = persona;
+        }
 	}
 	
 	public void ordenarRanking(){
@@ -68,7 +79,18 @@ public class Record extends CustomWriteFile{
 	public void showBestPlayer () {
 		System.out.println(jugadores[0].getPuntuacion() + "   " + jugadores[0].getNombre());
 	}
-	public void añadirJugador(String name) {
+	
+	public int buscarJugador(String persona) {
+		for(int i = 0; i<jugadores.length; i++){
+			if(jugadores[i] != null && jugadores[i].getNombre().equalsIgnoreCase(persona) == true) {
+				return i;
+			}
+		}
+		return 20;
+	}
+	
+	public int añadirJugador(String name) {
+		if(buscarJugador(name) == 20) {
 		Persona3 persona = new Persona3();
 		persona.setNombre(name);
 		int i = 0;
@@ -79,10 +101,21 @@ public class Record extends CustomWriteFile{
 			jugadores[i] = persona;
 		}
 		salida = i;
+		}else {
+			int puntuacion = jugadores[salida].getPuntuacion();
+			salida = buscarJugador(name);
+			jugadores[salida].setPuntuacion(0);
+			return puntuacion;
+		}
+		return 0;
 	}
 	
 	public void setPuntuacionRecord(int puntuacion) {
 		jugadores[salida].setPuntuacion(puntuacion);
+	}
+	
+	public void setNombreRecord(String nombre) {
+		jugadores[salida].setNombre(nombre);
 	}
 	
 	public int getPuntuacionRecord() {
