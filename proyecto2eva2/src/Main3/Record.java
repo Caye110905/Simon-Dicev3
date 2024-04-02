@@ -2,12 +2,19 @@ package Main3;
 
 import files.CustomWriteFile;
 
+/**
+ * @author cayet
+ */
+
 public class Record extends CustomWriteFile{
 	
 	private int MAX_JUGADORES = 10;
 	private Persona3[] jugadores = new Persona3[MAX_JUGADORES];
 	private int salida = 0;
 	
+	/**
+	 * Metodo que nos escribe los jugadores en el array. Tambien nos monta  el string de jugadores
+	 */
 	public void escribirRanking(){
 		String[] jugadores2 = new String[10];
         for(int i = 0; i < jugadores.length -1 && jugadores[i] != null; i++) {
@@ -18,6 +25,9 @@ public class Record extends CustomWriteFile{
         WriteJugadores(jugadores2);
 	}
 	
+	/**
+	 * Metodo que nos carga los jugadores en el array desde el fichero
+	 */
 	public void cargarRanking(){
 		String[] jugadores2 = LeerJugadores();
         for(int i = 0; i < jugadores2.length; i++) {
@@ -30,6 +40,9 @@ public class Record extends CustomWriteFile{
         }
 	}
 	
+	/**
+	 * Metodo para ordenar de mayor a menos los jugadores
+	 */
 	public void ordenarRanking(){
 		int f = 0;
 		int posicion = 0;
@@ -55,6 +68,10 @@ public class Record extends CustomWriteFile{
         escribirRanking();
 	}
 	
+	/**
+	 * Metodo para ordenar el array
+	 * @param array
+	 */
 	public void ordenarArray(int[] array) {
 		int numero = array.length;
 		for(int i = 0; i < numero -1; i++) {
@@ -68,6 +85,9 @@ public class Record extends CustomWriteFile{
 		}
 	}
 	
+	/**
+	 * Metodo que nos muestra el ranking ordenado del mejor al peor respecto a los puntos
+	 */
 	public void showRanking() {
 		for(int i = 0; i<jugadores.length - 1; i++){
 			if(jugadores[i] != null) {
@@ -76,10 +96,19 @@ public class Record extends CustomWriteFile{
 		}
 	}
 	
+	/**
+	 * Este metodo nos muestra el mejor o la mejor jugadora, pero, si hay mas de un jugador/a con la 
+	 * misma puntuacion, se mostraran todos q cumplan esta condicion 
+	 */
 	public void showBestPlayer () {
 		System.out.println(jugadores[0].getPuntuacion() + "   " + jugadores[0].getNombre());
 	}
 	
+	/**
+	 * Metodo en el que buscamos un jugador en la array de jugadores y lo devolvemos
+	 * @param persona Persona que queremos buscar
+	 * @return
+	 */
 	public int buscarJugador(String persona) {
 		for(int i = 0; i<jugadores.length; i++){
 			if(jugadores[i] != null && jugadores[i].getNombre().equalsIgnoreCase(persona) == true) {
@@ -89,6 +118,11 @@ public class Record extends CustomWriteFile{
 		return 20;
 	}
 	
+	/**
+	 * Metodo en el que se añade el jugaor a la array de jugadores
+	 * @param name Nombre que queremos añadir
+	 * @return
+	 */
 	public int añadirJugador(String name) {
 		if(buscarJugador(name) == 20) {
 		Persona3 persona = new Persona3();

@@ -146,6 +146,12 @@ import java.util.Random;
 			}
 	}
 	
+	/**
+	 * Este metodo se utiliza solamente en el modo dificil y sirve para que te de 
+	 * el proximo color utilizando la ayuda, pero, te resta puntos. 
+	 * @param _index
+	 * @return
+	 */
 	public boolean usarAyuda(int _index) {
 		if (ayuda > 0) {
 			ayuda --;

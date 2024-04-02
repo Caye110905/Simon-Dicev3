@@ -1,3 +1,6 @@
+pedro 26 
 r 24 
-l 15 
-j 4 
+l 24 
+j 24 
+Manolo 17 
+adri 15 
