@@ -7,8 +7,12 @@ import Main3.Engine3;
  * @author cayet
  */
 public class Main3 {
-
-     public static void main(String[] args) {
+	
+	/**
+	 * Metodo main
+	 * @param args main
+	 */
+    public static void main(String[] args) {
 		
 		Engine3 Engine = new Engine3();
 		Engine.play();

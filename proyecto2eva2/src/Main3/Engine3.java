@@ -28,6 +28,10 @@ import java.util.Random;
 	private int ayuda = 3;
 	private tColores1[] secuenciaColores1 = new tColores1[15];
 	private int puntuacionMax = 0;
+	
+	/**
+	 * Es un método para separar todo con lineas
+	 */
 	public void separador() {
 		System.out.println("------------------------------------------------------------");
 	}
@@ -38,7 +42,7 @@ import java.util.Random;
 	 * anteriormente en el enum tColores.
 	 * 
 	 * @param _color representa el caracter del color introducido por el usuario.
-	 * @return
+	 * @return devuelve un color del tipo tColores
 	 */
 	public tColores1 charToColor(char _color, tColores1 color) {
 		tColores1 colores = null;
@@ -78,7 +82,7 @@ import java.util.Random;
 	 * anteriormente en el enum tColores.
 	 * 
 	 * @param _numero representa el número entero.
-	 * @return
+	 * @return nombre
 	 */
 	public tColores1 intToColor(int _numero) {
 		tColores1 posicion = null;
@@ -128,7 +132,7 @@ import java.util.Random;
 	 * 
 	 * @param _index índice que el color ocupa dentro del array secuenciaColores.
 	 * @param _color color introducido por el usuario.
-	 * @return
+	 * @return nombre
 	 */
 	public boolean comprobarColor1(int _index, tColores1 _color) {
 		return secuenciaColores1[_index] == _color;
@@ -149,8 +153,7 @@ import java.util.Random;
 	/**
 	 * Este metodo se utiliza solamente en el modo dificil y sirve para que te de 
 	 * el proximo color utilizando la ayuda, pero, te resta puntos. 
-	 * @param _index
-	 * @return
+	 * @return nombre
 	 */
 	public boolean usarAyuda(int _index) {
 		if (ayuda > 0) {
@@ -176,7 +179,8 @@ import java.util.Random;
 
 	/**
 	 * Este es el inicio del juego donde te saludan, tienes que poner tu nombre y
-	 * pulsar ENTER para empezar a jugar.
+	 * pulsar ENTER para empezar a jugar
+	 * @return nombre
 	 */
 	public int start() {
 		separador();
@@ -187,7 +191,7 @@ import java.util.Random;
 		Scanner scanner = new Scanner(System.in);
 		String persona = scanner.nextLine();
 		cargarRanking();
-		puntuacionMax = añadirJugador(persona);
+		puntuacionMax = anadirJugador(persona);
 		System.out.println("Hello " + getNombreRecord() + ", press ENTER to start playing");
 		Scanner scanner1 = new Scanner(System.in);
 		scanner1.nextLine();
@@ -231,6 +235,7 @@ import java.util.Random;
 	
 	/**
 	 * Control del juego.
+	 * @return nombre
 	 */
 	public int play() {
 		int _numColores = start();

@@ -70,7 +70,6 @@ public class Record extends CustomWriteFile{
 	
 	/**
 	 * Metodo para ordenar el array
-	 * @param array
 	 */
 	public void ordenarArray(int[] array) {
 		int numero = array.length;
@@ -107,7 +106,7 @@ public class Record extends CustomWriteFile{
 	/**
 	 * Metodo en el que buscamos un jugador en la array de jugadores y lo devolvemos
 	 * @param persona Persona que queremos buscar
-	 * @return
+	 * @return nombre
 	 */
 	public int buscarJugador(String persona) {
 		for(int i = 0; i<jugadores.length; i++){
@@ -119,11 +118,11 @@ public class Record extends CustomWriteFile{
 	}
 	
 	/**
-	 * Metodo en el que se añade el jugaor a la array de jugadores
-	 * @param name Nombre que queremos añadir
-	 * @return
+	 * Metodo en el que se anade el jugaor a la array de jugadores
+	 * @param name Nombre que queremos anadir
+	 * @return nombre
 	 */
-	public int añadirJugador(String name) {
+	public int anadirJugador(String name) {
 		if(buscarJugador(name) == 20) {
 		Persona3 persona = new Persona3();
 		persona.setNombre(name);
@@ -144,18 +143,32 @@ public class Record extends CustomWriteFile{
 		return 0;
 	}
 	
+	/**
+	 * Este metodo obtiene la puntuacion de la persona
+	 */
 	public void setPuntuacionRecord(int puntuacion) {
 		jugadores[salida].setPuntuacion(puntuacion);
 	}
 	
+	/**
+	 * Este método establece el nombre de la persona
+	 */
 	public void setNombreRecord(String nombre) {
 		jugadores[salida].setNombre(nombre);
 	}
 	
+	/**
+	 * Este método establece el nombre de la persona.
+	 * @return nombre
+	 */
 	public int getPuntuacionRecord() {
 		return jugadores[salida].getPuntuacion();
 	}
 	
+	/**
+	 * Este metodo obtiene el nombre de la persona.
+	 * @return  nombre
+	 */
 	public String getNombreRecord() {
 		return jugadores[salida].getNombre();
 	}

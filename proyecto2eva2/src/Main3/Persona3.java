@@ -11,7 +11,7 @@ public class Persona3 {
 	
 	/**
 	 * Este metodo obtiene el nombre de la persona.
-	 * @return
+	 * @return nombre
 	 */
 	public String getNombre() {
 		return this.nombre;
@@ -19,7 +19,6 @@ public class Persona3 {
 	
 	/**
 	 * Este método establece el nombre de la persona
-	 * @param nombre
 	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
@@ -27,7 +26,6 @@ public class Persona3 {
 	
 	/**
 	 * Este metodo obtiene la puntuacion de la persona
-	 * @param puntuacion
 	 */
 	public void setPuntuacion(int puntuacion) {
         this.puntuacion = puntuacion;
@@ -35,12 +33,10 @@ public class Persona3 {
 	
 	/**
 	 * Este método establece el nombre de la persona. 
-	 * @return
+	 * @return nombre
 	 */
 	public int getPuntuacion() {
         return this.puntuacion;
     }
-	
-
 }
 
