@@ -3,9 +3,9 @@ package Main3;
 import files.CustomWriteFile;
 
 /**
+ * Clase Record
  * @author cayet
  */
-
 public class Record extends CustomWriteFile{
 	
 	private int MAX_JUGADORES = 10;

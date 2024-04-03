@@ -12,4 +12,3 @@ public interface ICustomReadFile {
     public ArrayList<Persona3> leerJugador();
     public void closeReadFile() throws IOException;
 }
-

@@ -112,7 +112,6 @@ import java.util.Random;
 		return posicion;
 	}
 	
-	
 	/**
 	 * Este método genera una secuencia con numeros random o aleatorios.
 	 * 
