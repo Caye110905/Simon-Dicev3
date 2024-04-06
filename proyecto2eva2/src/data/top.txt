@@ -1,6 +1,7 @@
-pedro 26 
-r 24 
-l 24 
-j 24 
-Manolo 17 
-adri 15 
+u 13 
+Caye 12 
+sierra 11 
+t 11 
+hugo 10
+pedro 6 
+l 2 

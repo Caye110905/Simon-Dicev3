@@ -16,8 +16,8 @@ public class Record extends CustomWriteFile{
 	 * Metodo que nos escribe los jugadores en el array. Tambien nos monta  el string de jugadores
 	 */
 	public void escribirRanking(){
-		String[] jugadores2 = new String[10];
-        for(int i = 0; i < jugadores.length -1 && jugadores[i] != null; i++) {
+		String[] jugadores2 = new String[MAX_JUGADORES];
+        for(int i = 0; i < jugadores.length && jugadores[i] != null; i++) {
         	if(jugadores[i] != null) {
         		jugadores2[i] = jugadores[i].getNombre() + " " + String.valueOf(jugadores[i].getPuntuacion());
         	}
@@ -30,7 +30,7 @@ public class Record extends CustomWriteFile{
 	 */
 	public void cargarRanking(){
 		String[] jugadores2 = LeerJugadores();
-        for(int i = 0; i < jugadores2.length; i++) {
+        for(int i = 0; i < jugadores2.length;i++) {
         	Persona3 persona = new Persona3();
         	String split[] = jugadores2[i].split(" ");
         	int num = Integer.parseInt(split[1]);
@@ -46,7 +46,7 @@ public class Record extends CustomWriteFile{
 	public void ordenarRanking(){
 		int f = 0;
 		int posicion = 0;
-		Persona3[] jugadores2 = new Persona3[10];
+		Persona3[] jugadores2 = new Persona3[MAX_JUGADORES];
         int[] puntuaciones = new int[MAX_JUGADORES];
         for (int i = 0; i <jugadores.length && jugadores[i] != null ; i++) {
             puntuaciones[i] = jugadores[i].getPuntuacion();
@@ -62,7 +62,7 @@ public class Record extends CustomWriteFile{
         	}
             puntuaciones[f] = 0;
         }
-        for(int i = 0; i < jugadores2.length -1; i++) {
+        for(int i = 0; i < MAX_JUGADORES; i++) {
         	jugadores[i] = jugadores2[i];
         }
         escribirRanking();
