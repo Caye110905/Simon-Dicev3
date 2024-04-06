@@ -36,6 +36,7 @@ import java.util.Random;
 		System.out.println("------------------------------------------------------------");
 	}
 
+	
 	/**
 	 * Este método lo utilizamos para saber cual es la primera letra de cada color
 	 * para identificarlos y, asi, nos devuelve cualquiera de los 4 colores puestos
